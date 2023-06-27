@@ -1,8 +1,10 @@
-import 'package:cargapesada/pages/home.dart';
 import 'package:flutter/material.dart';
+import 'package:cargapesada/pages/home.dart';
+import 'package:cargapesada/components/custom_button.dart';
+import 'package:cargapesada/components/custom_text_field.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,89 +26,34 @@ class LoginPage extends StatelessWidget {
               const SizedBox(
                 height: 48,
               ),
-              const Text(
-                'Email',
-                style: TextStyle(fontSize: 12, color: Color.fromRGBO(33, 33, 33, 1))
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              TextFormField(
-                // autofocus: true,
+              const CustomTextField(
+                label: 'Email',
+                placeholder: 'Ex: joão@email.com',
+                textStyle: TextStyle(fontSize: 12),
                 keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  hintText: "Ex: joão@email.com",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(2.0)),
-                    borderSide: BorderSide(
-                      color: Color.fromRGBO(217, 217, 217, 1),
-                      width: 1,
-                    )
-                  ),
-                ),
-                style: const TextStyle(fontSize: 12),
               ),
               const SizedBox(
                 height: 15,
               ),
-              const Text(
-                'Senha',
-                style: TextStyle(fontSize: 12, color: Color.fromRGBO(33, 33, 33, 1))
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              TextFormField(
-                // autofocus: true,
-                keyboardType: TextInputType.text,
+              const CustomTextField(
+                label: 'Senha',
+                placeholder: 'Digite a sua senha',
+                textStyle: TextStyle(fontSize: 12),
                 obscureText: true,
-                decoration: const InputDecoration(
-                  hintText: "Digite a sua senha",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(2.0)),
-                    borderSide: BorderSide(
-                      color: Color.fromRGBO(217, 217, 217, 1),
-                      width: 1,
-                    )
-                  ),
-                ),
-                style: const TextStyle(fontSize: 12),
               ),
               const SizedBox(
                 height: 48,
               ),
-              Container(
-                height: 42,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  color: Color.fromRGBO(234, 80, 21, 1)
-                ),
-                child: SizedBox.expand(
-                  child: TextButton(
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "Entrar",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+              CustomButton(
+                text: 'Entrar',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomePage(),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                  );
+                },
               ),
             ],
           ),
